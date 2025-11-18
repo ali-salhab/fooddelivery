@@ -1,6 +1,8 @@
 {
   "extends": "expo/tsconfig.json",
   "compilerOptions": {
+    "jsx": "react",
+
     "strict": true,
     "paths": {
       "@/*": ["./*"]
