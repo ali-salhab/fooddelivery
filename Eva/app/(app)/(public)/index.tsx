@@ -5,6 +5,10 @@ import { StyleSheet } from "react-native";
 import Animated, { FadeInDown } from "react-native-reanimated";
 import GoogleAuthButton from "@/components/auth/GoogleAuthButton";
 import AppleAuthButton from "@/components/auth/AppleAuthButton";
+import SmothInfiniteScroll from "@/components/SmothInfiniteScroll";
+
+import { LinearGradient } from "expo-linear-gradient";
+
 export default function Index() {
   const openWebBrowser = (url: string) => {
     // Implement web browser opening logic here
@@ -13,7 +17,30 @@ export default function Index() {
   };
   return (
     <View style={style.container}>
-      <View style={style.infiniteScrollContainer}></View>
+      <View style={style.infiniteScrollContainer}>
+        <View>
+          <SmothInfiniteScroll scrollDirection="down" iconSet="set1" />
+        </View>
+        <View>
+          <SmothInfiniteScroll scrollDirection="up" iconSet="set2" />
+        </View>
+        <View>
+          <SmothInfiniteScroll scrollDirection="down" iconSet="set3" />
+        </View>
+        <LinearGradient
+          colors={["transparent", "#fefefeff"]}
+          style={{
+            position: "absolute",
+
+            height: 500,
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+          }}
+        ></LinearGradient>
+      </View>
+
       <View style={style.contentContainer}>
         <Image
           source={require("@/assets/wolt-logo.png")}
@@ -117,9 +144,19 @@ const style = StyleSheet.create({
     flex: 1,
     // backgroundColor: "#ffff33",
     alignItems: "center",
+    justifyContent: "center",
+    gap: 20,
+    paddingTop: 40,
   },
   infiniteScrollContainer: {
+    marginBottom: 20,
     flex: 0.8,
     // backgroundColor: "#ff0066",
+    flexDirection: "row",
+    justifyContent: "center",
+    paddingHorizontal: 10,
+    gap: 4,
+    position: "relative",
+    overflow: "hidden",
   },
 });
